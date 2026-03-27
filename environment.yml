@@ -1,0 +1,15 @@
+name: kaggle_pipeline
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11.14 # Need to specify a lower version of Python so that bigquery can be loaded as a target in meltano
+  - pip            # Required to manage the libraries below
+  - polars         # High-performance data manipulation
+  - python-dotenv  # To read your .env file
+  - pip:
+    - meltano      # The ingestion engine
+    - kaggle       # To interact with the Kaggle API
+    - dbt-core     # The transformation engine
+    - dbt-bigquery # The adapter (Change to dbt-snowflake if needed)
+    - google-cloud-bigquery  # <--- ADD THIS for Python script access

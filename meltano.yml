@@ -1,0 +1,24 @@
+default_environment: dev
+project_id: 019d24f9-4bc3-75c1-8f7e-70dd88d263e3
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-kaggle
+    pip_url: git+https://github.com/MeltanoLabs/tap-custom.git
+    config:
+      command: python scripts/extract_kaggle.py
+  loaders:
+  - name: target-bigquery
+    variant: z3z1ma
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git setuptools<70
+    config:
+      batch_size: 100000000
+      dataset: brazilian_ecommerce
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+      method: batch_job
+      project: golden-cosmos-488514-c9
