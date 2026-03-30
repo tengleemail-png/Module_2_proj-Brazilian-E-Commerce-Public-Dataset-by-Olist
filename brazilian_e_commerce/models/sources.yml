@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: brazilian_ecommerce #up to you
+    database: golden-cosmos-488514-c9
+    schema: brazilian_ecommerce #dataset name in bigquery, which is also the one that we set when we transfer the data in from Meltano
+    tables:
+      - name: olist_order_items_dataset
+      - name: olist_customers_dataset
+      - name: olist_orders_dataset
+      #- name: olist_products_dataset
+      #- name: olist_sellers_dataset
+      #- name: olist_order_payments_dataset
+      - name: olist_order_reviews_dataset
